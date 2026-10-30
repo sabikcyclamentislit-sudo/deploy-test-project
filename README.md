@@ -1,16 +1,33 @@
-# React + Vite
+# Deploy Test Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A small React single-page app used to test deploying a static site and checking its behavior once it's live.
 
-Currently, two official plugins are available:
+It has two pages, **Home** (`/`) and **About** (`/about`), handled in the browser by React Router, plus a "page not found" view for unknown paths.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Requirements
 
-## React Compiler
+- Node.js 18, 20 or 22+
+- npm
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Scripts
 
-## Expanding the Oxlint configuration
+| Command | What it does |
+|---|---|
+| `npm install` | Install dependencies |
+| `npm run dev` | Start the local dev server |
+| `npm run build` | Build the production files into `dist/` |
+| `npm run preview` | Serve the built `dist/` folder locally |
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Build output
+
+`npm run build` produces static files only (HTML, JS, CSS) in the `dist/` folder. There is no server code, so any static host can serve it.
+
+## Environment variables
+
+Values are read at build time and shown on the page. They are embedded in the public JavaScript bundle, so **never put secrets in them**.
+
+| Variable | Example | Purpose |
+|---|---|---|
+| `VITE_APP_NAME` | `My React App` | Title shown on the page |
+| `VITE_APP_ENV` | `production` | Environment label shown on the page |
+| `VITE_BUILD_TIME` | *(set automatically)* | Build timestamp, set by the `build` script |
